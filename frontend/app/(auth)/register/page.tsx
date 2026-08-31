@@ -10,19 +10,21 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { MailIcon, Smartphone } from "lucide-react";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center">Login</CardTitle>
+        <CardTitle className="text-2xl font-bold text-center">
+          Register
+        </CardTitle>
         <CardDescription className="text-sm text-muted-foreground text-center">
-          Welcome to the login page
+          Welcome to the registration page
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <Button className="w-full rounded-[30px] border border-gray-300 flex items-center justify-center gap-2 py-2 shadow hover:bg-sky-500 active:translate-y-[2px] transition cursor-pointer">
           <MailIcon className="w-4 h-4" />
-          <span className="text-sm font-medium">Sign In with Email</span>
+          <span className="text-sm font-medium">Sign Up with Mail</span>
         </Button>
 
         <div className="mt-4 text-sm text-muted-foreground text-center">
@@ -42,13 +44,13 @@ export default function LoginPage() {
 
           <Button className="w-full rounded-[30px] border border-gray-300 flex items-center justify-center gap-2 py-2 shadow hover:bg-sky-500 active:translate-y-[2px] transition cursor-pointer">
             <Smartphone className="w-4 h-4" />
-            <span className="text-sm font-medium">Sign In with Phone</span>
+            <span className="text-sm font-medium">Sign Up with Phone</span>
           </Button>
 
           <div className="text-sm text-muted-foreground text-center">
-            <span>Do not have an account? </span>
-            <Link href="/register" className="text-primary hover:underline">
-              Register
+            <span>Already have an account? </span>
+            <Link href="/login" className="text-primary hover:underline">
+              Login
             </Link>
           </div>
         </div>

@@ -1,13 +1,15 @@
 "use client";
+import * as React from "react";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/ui/themeToggle";
+import Link from "next/link";
 import Image from "next/image";
 const navItems = [
-  { label: "Trang chủ", href: "/" },
-  { label: "Khóa học", href: "/courses" },
-  { label: "Lớp học", href: "/classes" },
-  { label: "Bài học", href: "/lessons" },
+  { label: "Home", href: "/" },
+  { label: "Courses", href: "/courses" },
+  { label: "Classes", href: "/classes" },
+  { label: "Lessons", href: "/lessons" },
 ];
 
 export default function Navbar() {
@@ -56,17 +58,18 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/login"
-            className="rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-primary transition-all duration-300"
+            className="bold-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-primary transition-all duration-300"
           >
-            Đăng nhập
+            Login
           </Link>
 
           <Link
             href="/register"
             className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-primary/90 transition-all duration-300"
           >
-            Đăng ký
+            Register
           </Link>
+          <ThemeToggle />
         </div>
       </div>
     </nav>
