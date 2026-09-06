@@ -1,32 +1,30 @@
-import { ThemeProvider } from "next-themes";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+/**
+ * Auth layout: used for /login and /register pages.
+ * ThemeProvider is inherited from root layout – no duplication needed.
+ * Renders a centered card layout without main content area padding from root.
+ */
 export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-    >
-      <div className="relative flex min-h-svh flex-col items-center justify-center">
-        <div className="flex w-full max-w-sm flex-col gap-6">
-          <Link
-            href="/"
-            className="absolute top-4 left-4 flex items-center gap-2"
-          >
-            <ArrowLeft className="h-6 w-6" />
-            Back to Home
-          </Link>
+    <div className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4 py-12">
+      {/* Back to Home link */}
+      <Link
+        href="/"
+        className="absolute top-6 left-6 flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Về trang chủ
+      </Link>
 
-          {children}
-        </div>
-      </div>
-    </ThemeProvider>
+      {/* Auth card container */}
+      <div className="w-full max-w-md">{children}</div>
+    </div>
   );
 }
+

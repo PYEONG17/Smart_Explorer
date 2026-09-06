@@ -1,13 +1,23 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ui/themeToggle";
+import HeroSection from "@/components/home/HeroSection";
+import FeaturesSection from "@/components/home/FeaturesSection";
+import CoursesSection from "@/components/home/CoursesSection";
+import AISection from "@/components/home/AISection";
+import CTASection from "@/components/home/CTASection";
+import Footer from "@/components/home/Footer";
 
-import { ThemeProvider } from "next-themes";
-
-export default function Home() {
+/**
+ * Homepage: Composes all landing page sections.
+ * Business logic stays in individual section components.
+ */
+export default function HomePage() {
   return (
-    <div>
-      <Button>Click me</Button>
-    </div>
+    <>
+      <HeroSection />
+      <FeaturesSection />
+      <CoursesSection />
+      <AISection />
+      <CTASection />
+      <Footer />
+    </>
   );
 }

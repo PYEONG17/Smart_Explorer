@@ -5,36 +5,39 @@ import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/ui/themeToggle";
 import Link from "next/link";
 import Image from "next/image";
+
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Courses", href: "/courses" },
-  { label: "Classes", href: "/classes" },
-  { label: "Lessons", href: "/lessons" },
+  { label: "Trang chủ", href: "/" },
+  { label: "Khóa học", href: "/courses" },
+  { label: "Lớp học", href: "/classes" },
+  { label: "Bài học", href: "/lessons" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b bg-white/80 backdrop-blur-md shadow-md">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md shadow-sm">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <Link
           href="/"
-          className="text-2xl font-extrabold text-primary tracking-wide hover:text-primary/80 transition-colors"
+          className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
         >
           <Image
-            src="/logo_eduka.png"
-            width={45}
-            height={40}
-            alt="Eduka Logo"
-            className="cursor-pointer"
+            src="/logo.png"
+            width={36}
+            height={36}
+            alt="SmartExplorer Logo"
+            className="rounded-lg"
           />
-          SmartExplorer
+          <span className="text-xl font-bold tracking-tight text-foreground">
+            Smart<span className="text-blue-500">Explorer</span>
+          </span>
         </Link>
 
-        {/* Navigation */}
-        <div className="flex items-center gap-3">
+        {/* Navigation links – hidden on mobile */}
+        <div className="hidden md:flex items-center gap-1">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
 
@@ -42,10 +45,10 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   isActive
-                    ? "bg-primary text-white shadow-sm"
-                    : "text-gray-700 hover:bg-gray-100 hover:text-primary"
+                    ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
                 }`}
               >
                 {item.label}
@@ -54,21 +57,22 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Auth */}
-        <div className="flex items-center gap-3">
+        {/* Auth buttons + Theme toggle */}
+        <div className="flex items-center gap-2">
           <Link
             href="/login"
-            className="bold-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-primary transition-all duration-300"
+            className="rounded-lg px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-200"
           >
-            Login
+            Đăng nhập
           </Link>
 
           <Link
             href="/register"
-            className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-primary/90 transition-all duration-300"
+            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-all duration-200"
           >
-            Register
+            Đăng ký
           </Link>
+
           <ThemeToggle />
         </div>
       </div>
