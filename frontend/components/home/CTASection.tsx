@@ -1,9 +1,13 @@
+"use client";
 import Link from "next/link";
+import { useLang } from "@/contexts/LanguageContext";
 
 /**
  * CTA Section: Final call-to-action before footer.
  */
 export default function CTASection() {
+  const { t } = useLang();
+
   return (
     <section className="py-20 md:py-28 bg-muted/30">
       <div className="mx-auto max-w-7xl px-6">
@@ -16,46 +20,33 @@ export default function CTASection() {
           <div className="relative z-10 flex flex-col items-center gap-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-sm text-blue-300">
               <span className="h-2 w-2 animate-pulse rounded-full bg-blue-400" />
-              Miễn phí đăng ký
+              {t("cta.badge")}
             </div>
 
             <h2 className="max-w-2xl text-3xl font-extrabold text-white md:text-4xl lg:text-5xl">
-              Sẵn sàng bắt đầu hành trình{" "}
+              {t("cta.title1")}{" "}
               <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                khám phá tri thức?
+                {t("cta.title2")}
               </span>
             </h2>
 
-            <p className="max-w-xl text-slate-300 text-lg leading-relaxed">
-              Tham gia SmartExplorer ngay hôm nay. Học Toán và Khoa học theo
-              cách thú vị, hiệu quả và hiện đại nhất.
-            </p>
+            <p className="max-w-xl text-slate-300 text-lg leading-relaxed">{t("cta.desc")}</p>
 
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/register"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-900/50 hover:bg-blue-500 transition-all duration-200 hover:-translate-y-0.5"
               >
-                Đăng ký miễn phí
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
+                {t("cta.register")}
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
               <Link
                 href="/courses"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/10 transition-all duration-200"
               >
-                Xem khóa học
+                {t("cta.courses")}
               </Link>
             </div>
           </div>

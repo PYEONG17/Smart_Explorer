@@ -91,7 +91,10 @@ function MenubarItem({
   inset,
   variant = "default",
   ...props
-}: React.ComponentProps<typeof DropdownMenuItem>) {
+}: React.ComponentProps<typeof DropdownMenuItem> & {
+  inset?: boolean
+  variant?: "default" | "destructive"
+}) {
   return (
     <DropdownMenuItem
       data-slot="menubar-item"

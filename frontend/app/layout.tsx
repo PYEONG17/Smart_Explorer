@@ -2,11 +2,25 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "SmartExplorer – Interactive Bilingual STEM Learning",
+  title: {
+    template: "%s | SmartExplorer",
+    default: "SmartExplorer – Nền tảng học STEM song ngữ tương tác",
+  },
   description:
-    "Nền tảng học Toán và Khoa học bằng tiếng Anh thông qua video, hoạt động tương tác, AI và mô hình 3D.",
+    "Học Toán và Khoa học qua video tương tác, bài tập thực hành, trợ lý AI và mô hình 3D trực quan dành cho học sinh trung học.",
+  keywords: ["STEM", "học trực tuyến", "song ngữ", "Toán", "Khoa học", "3D", "AI"],
+  openGraph: {
+    title: "SmartExplorer – Nền tảng học STEM song ngữ tương tác",
+    description: "Học Toán và Khoa học qua video tương tác, bài tập thực hành, trợ lý AI và mô hình 3D trực quan.",
+    url: "https://smartexplorer.edu.vn",
+    siteName: "SmartExplorer",
+    locale: "vi_VN",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -16,17 +30,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {/* Fixed Navbar sits outside <main> for correct semantic HTML */}
-          <Navbar />
-          {/* pt-16 offsets content below the fixed 64px navbar */}
-          <main className="min-h-screen pt-16">{children}</main>
+          <LanguageProvider>
+            {/* Fixed Navbar sits outside <main> for correct semantic HTML */}
+            <Navbar />
+            {/* pt-16 offsets content below the fixed 64px navbar */}
+            <main className="min-h-screen pt-16">{children}</main>
+            <Toaster richColors position="top-right" />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
